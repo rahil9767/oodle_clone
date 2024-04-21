@@ -59,3 +59,5 @@ Container signInSignUpButton(
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)))),
     ),);
 }
+
+

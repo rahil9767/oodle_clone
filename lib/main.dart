@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:oodle/pages/nearby_page.dart';
+import 'package:oodle/pages/profile_page.dart';
 
-import 'signUpScreen.dart';
+import 'screens/signUpScreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,6 +23,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: const SignUpScreen(),
+      // home:ProfilePage(),
     );
   }
 }

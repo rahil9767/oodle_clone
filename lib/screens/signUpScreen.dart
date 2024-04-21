@@ -3,8 +3,9 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
-import 'package:oodle/home_page.dart';
 import 'package:oodle/utils/colour.dart';
+
+import '../home_page.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
@@ -29,10 +30,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             height: MediaQuery.of(context).size.height,
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: [
-                  hexStringTocolor('6c88dc'),
-                  hexStringTocolor('7362ec'),
-                ],
+                colors: MyColors.gradientColors,
                 begin: Alignment.topLeft,
                 end: Alignment.bottomCenter,
               ),

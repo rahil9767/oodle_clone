@@ -1,10 +1,10 @@
-import 'package:flutter/material.dart';
 
-hexStringTocolor(String hexcolor){
-  hexcolor = hexcolor.toUpperCase().replaceAll('#',"" );
-  if (hexcolor.length==6){
-    hexcolor="FF"+ hexcolor;
+import 'dart:ui';
 
-  }
-  return Color(int.parse(hexcolor,radix: 16));
+class MyColors {
+  static const Color primaryColor = Color(0xFF6c88dc);
+  static const Color secondaryColor = Color(0xFF7362ec);
+  static const Color accentColor = Color(0xFF);
+
+  static const List<Color> gradientColors = [primaryColor, secondaryColor];
 }
