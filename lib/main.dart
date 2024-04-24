@@ -1,30 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:oodle/pages/nearby_page.dart';
-import 'package:oodle/pages/profile_page.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:oodle/provider/google_SignIn.dart';
+import 'package:oodle/routes/app_routes.dart';
+import 'package:provider/provider.dart';
 
-import 'screens/signUpScreen.dart';
-
-void main() {
+void main()  async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+    return ChangeNotifierProvider(
+      create: (context) => GoogleSignInProvider(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSwatch(
+            primarySwatch: Colors.deepPurple,
+          ),
+          useMaterial3: true,
+        ),
+        initialRoute: AppRoutes.homepage,
+        routes: AppRoutes.routes,
       ),
-      home: const SignUpScreen(),
-      // home:ProfilePage(),
     );
   }
 }
-

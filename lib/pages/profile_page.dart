@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sliding_sheet2/sliding_sheet2.dart';
 import '../reusable_widgets/menu.dart';
 import '../utils/colour.dart';
 
 class ProfilePage extends StatefulWidget {
-  const ProfilePage({Key? key}) : super(key: key);
+  final GoogleSignInAccount? user;
+
+  const ProfilePage({Key? key, this.user}) : super(key: key);
 
   @override
   State<ProfilePage> createState() => _ProfilePageState();
@@ -15,7 +18,7 @@ class _ProfilePageState extends State<ProfilePage> {
     Navigator.push(
       context,
       MaterialPageRoute(
-          builder: (_) => const Menu()), // Navigate to the Menu page
+          builder: (_) => Menu()),
     );
   }
 
@@ -235,3 +238,5 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 }
+
+

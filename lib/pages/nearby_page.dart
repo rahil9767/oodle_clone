@@ -28,9 +28,11 @@ class _NearbyPageState extends State<NearbyPage> {
 
   Future<void> _fetchUserData() async {
     await _userFetcher.fetchUser();
-    setState(() {
-      users = _userFetcher.users;
-    });
+    if (mounted) {
+      setState(() {
+        users = _userFetcher.users;
+      });
+    }
   }
 
   void addSelectedInterest(Interest interest) {

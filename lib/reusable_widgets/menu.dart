@@ -1,6 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import '../utils/colour.dart';
+import '../routes/app_routes.dart'; // Import the AppRoutes class
 
 class Menu extends StatefulWidget {
   const Menu({Key? key}) : super(key: key);
@@ -63,47 +66,16 @@ class _MenuState extends State<Menu> with SingleTickerProviderStateMixin {
     }
   }
 
-  // Widget _buildMenuItem(int index) {
-  //   List<IconData> leadingIcons = [
-  //     CupertinoIcons.person,
-  //     CupertinoIcons.person_2,
-  //     CupertinoIcons.nosign,
-  //     CupertinoIcons.settings,
-  //     CupertinoIcons.arrow_turn_up_left,
-  //     CupertinoIcons.headphones,
-  //     CupertinoIcons.arrow_right,
-  //   ];
-  //   return ListTile(
-  //     leading: Icon(leadingIcons[index]),
-  //     trailing: const Icon(
-  //       CupertinoIcons.forward,
-  //       color: Colors.white,
-  //     ),
-  //     title: Text(
-  //       _menuTitles[index],
-  //       style: const TextStyle(
-  //         color: Colors.white,
-  //         fontSize: 20,
-  //         fontWeight: FontWeight.bold,
-  //       ),
-  //     ),
-  //     onTap: () {
-  //       // Handle menu item tap
-  //       print('Tapped ${_menuTitles[index]}');
-  //     },
-  //   );
-  // }
-
   Widget _buildMenuItem(int index) {
-      List<IconData> leadingIcons = [
-        CupertinoIcons.person,
-        CupertinoIcons.person_2,
-        CupertinoIcons.nosign,
-        CupertinoIcons.settings,
-        CupertinoIcons.arrow_turn_up_left,
-        CupertinoIcons.headphones,
-        CupertinoIcons.arrow_right,
-      ];
+    List<IconData> leadingIcons = [
+      CupertinoIcons.person,
+      CupertinoIcons.person_2,
+      CupertinoIcons.nosign,
+      CupertinoIcons.settings,
+      CupertinoIcons.arrow_turn_up_left,
+      CupertinoIcons.headphones,
+      CupertinoIcons.arrow_right,
+    ];
 
     final Animation<double> animation = Tween<double>(
       begin: 0.0,
@@ -143,12 +115,57 @@ class _MenuState extends State<Menu> with SingleTickerProviderStateMixin {
             ),
             onTap: () {
               // Handle menu item tap
-              print('Tapped ${_menuTitles[index]}');
+              _handleMenuItemTap(index,context);
             },
           ),
         );
       },
     );
+  }
+
+
+
+  void _handleMenuItemTap(int index, BuildContext context) async {
+    switch (index) {
+      case 0: // Edit profile
+        Navigator.pushNamed(context, AppRoutes.editProfile);
+        break;
+      case 1: // Close Friends
+        Navigator.pushNamed(context, AppRoutes.closeFriends);
+        break;
+      case 2: // Blocked Account
+        Navigator.pushNamed(context, AppRoutes.blockedAccount);
+        break;
+      case 3: // Setting
+        Navigator.pushNamed(context, AppRoutes.settings);
+        break;
+      case 4: // Invite Your friends to Oodle
+        Navigator.pushNamed(context, AppRoutes.inviteFriends);
+        break;
+      case 5: // Support & Feedback
+        Navigator.pushNamed(context, AppRoutes.supportFeedback);
+        break;
+      case 6: // Logout
+        await _handleLogout(context);
+        break;
+      default:
+      // Handle default case
+        break;
+    }
+  }
+
+  Future<void> _handleLogout(BuildContext context) async {
+    final googleSignIn = GoogleSignIn();
+    final firebaseAuth = FirebaseAuth.instance;
+
+    try {
+      await googleSignIn.signOut(); // Sign out from Google
+      await firebaseAuth.signOut(); // Sign out from Firebase Auth
+      Navigator.pushNamedAndRemoveUntil(context, AppRoutes.signIn, (route) => false);
+    } catch (error) {
+      print('Logout error: $error');
+      // Handle logout error, show a snackbar or alert dialog to notify the user
+    }
   }
 
 

@@ -17,9 +17,9 @@ class BottomNavigationBarWidget extends StatelessWidget {
       onTap: onTap,
       showUnselectedLabels: true,
       selectedItemColor: Colors.deepPurple,
-      unselectedItemColor: Colors.grey,
+      unselectedItemColor: Colors.white70,
       iconSize: 20,
-      backgroundColor: Colors.transparent,
+      backgroundColor: Colors.white.withOpacity(0.3),
       items: [
         BottomNavigationBarItem(
           icon: GestureDetector(

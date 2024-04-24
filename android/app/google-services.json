@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1081392414916",
+    "project_id": "oodle-b0245",
+    "storage_bucket": "oodle-b0245.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1081392414916:android:8af8f7da745687e81d8991",
+        "android_client_info": {
+          "package_name": "com.example.oodle"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1081392414916-192qofo6uv8u3f16ibmt9ing2g7itmmk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.oodle",
+            "certificate_hash": "5a16f0585a9e7cbed5110e05ca2aaaf8cc41a844"
+          }
+        },
+        {
+          "client_id": "1081392414916-2kk8oe1ih9sbpib9jf08shffqcb5lf3s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA99RAbPKuEzUwAVjvfc3aCJcRLVkyz3GM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1081392414916-2kk8oe1ih9sbpib9jf08shffqcb5lf3s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
